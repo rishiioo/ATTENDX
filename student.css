@@ -77,3 +77,18 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
+.attendance-details {
+    background-color: lightblue;;     /* what color? */
+    padding: 30px;              /* how much? 20px? 30px? */
+    margin: 20px;               /* space outside? */
+    border-radius: 10px;        /* rounded corners? 10px? */
+}
+.attendance-details table {
+    width: 100%;                /* you said 100% */
+    border-collapse: collapse; /* removes double borders */
+}
+.attendance-details th {
+    background-color: rosybrown;     /* pick a bright color! */
+    padding: 10px;              /* 10px? 15px? */
+    text-align: center;           /* you said centered */
+}
