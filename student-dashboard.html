@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard- ATTENDX</title>
+    <link rel="stylesheet" href="student.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <h2>ATTENDX</h2>
+      <button class="logout-btn">Logout</button>
+    </nav>
+    <div class="student-info">
+      <div class="left">
+        <img src="user img.webp" alt="user img" />
+      </div>
+      <div class="middle">
+        <p><strong>Name:</strong> Rishi Singh</p>
+        <p><strong>Roll No:</strong> 71</p>
+        <p><strong>Class:</strong> F.Y.BSc(CS)</p>
+      </div>
+      <div class="right">
+        <p><strong>Overall %:</strong> 81.08 %</p>
+        <p><strong>Present:</strong> 30 days</p>
+        <p><strong>Absent:</strong> 7 days</p>
+      </div>
+    </div>
+    <div class="subject-selector">
+      <label for="subject">Select Subject:</label>
+      <select id="subject">
+        <option value="">-- Choose Subject --</option>
+        <option value="math">Mathematics</option>
+        <option value="c">Computer</option>
+        <option value="stats">Statistics</option>
+        <option value="oe">OE (Business Entrepreneurship)</option>
+        <option value="evs">EVS</option>
+        <option value="electronics">Electronics Basic</option>
+      </select>
+    </div>
+    <div class="attendance-details">
+    <h3>Subject: <span id="selected-subject">Select a subject</span></h3>
+    <table>
+    <tr>
+        <th>Date</th>
+        <th>Status</th>
+    </tr>
+    <tr>
+        <td>10-Jan-2026</td>
+        <td>Present</td>
+    </tr>
+    <tr>
+        <td>9-Jan-2025</td>
+        <td>Absent</td>
+    </tr>
+        <tr>
+        <td>8-Jan-2025</td>
+        <td>Absent</td>
+    </tr>
+    <tr>
+        <td>7-Jan-2025</td>
+        <td>Absent</td>
+    </tr>
+    <tr>
+        <td>6-Jan-2025</td>
+        <td>Absent</td>
+    </tr>
+    <tr>
+        <td>5-Jan-2025</td>
+        <td>Present</td>
+    </tr>
+    <tr>
+        <td>3-Jan-2025</td>
+        <td>Absent</td>
+    </tr>
+    <tr>
+        <td>2-Jan-2026</td>
+        <td>Absent</td>
+    </tr>
+    <tr>
+        <td>31-Dec-2026</td>
+        <td>Absent</td>
+    </tr>
+    <tr>
+        <td>30-Dec-2026</td>
+        <td>Absent</td>
+    </tr>
+    <tr>
+        <td>29-Dec-2026</td>
+        <td>Absent</td>
+    </tr>
+    <tr>
+        <td>27-Dec-2026</td>
+        <td>Absent</td>
+    </tr>
+    <tr>
+        <td>26-Dec-2026</td>
+        <td>Absent</td>
+    </tr>
+    <tr>
+        <td>25-Dec-2026</td>
+        <td>Absent</td>
+    </tr>
+    <tr>
+        <td>24-Dec-2026</td>
+        <td>Absent</td>
+    </tr>
+    <tr>
+        <td>23-Dec-2026</td>
+        <td>Absent</td>
+    </tr>
+    <tr>
+        <td>22-Dec-2026</td>
+        <td>Absent</td>
+    </tr>
+
+</table>
+</div>
+    <script src="student.js"></script>
+  </body>
+</html>

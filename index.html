@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ATTENDX</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="login-box">
+      <form id="loginForm">
+        <h4>ATTENDX</h4>
+
+        <!-- ADD THIS OPENING DIV HERE -->
+        <div class="radio-group">
+          <input type="radio" name="userType" value="student" id="student" />
+          <label for="student">Student</label>
+
+          <input type="radio" name="userType" value="teacher" id="teacher" />
+          <label for="teacher">Teacher</label>
+
+          <input type="radio" name="userType" value="admin" id="admin" />
+          <label for="admin">Admin</label>
+
+          <!-- ADD THIS CLOSING DIV HERE -->
+        </div>
+
+        <label for="username">Username</label>
+        <input type="text" id="username" />
+        <label for="password">Password</label>
+        <input type="password" id="password" />
+
+        <div id="login-form">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
