@@ -1,12 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Teacher dashboard</title>
-    <link rel="stylesheet" href="teacher.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - ATTENDX</title>
+    <link rel="stylesheet" href="teacher.css">
 </head>
 <body>
+    
+    <nav class="navbar">
+        <h2>ATTENDX</h2>
+        <button class="logout-btn">Logout</button>
+    </nav>
+
+    <div class="teacher-container">
+        <h2>Mark Attendance</h2>
+        
+        <div class="form-section">
+            <label for="subject">Select Subject:</label>
+            <select id="subject">
+                <option value="">-- Choose Subject --</option>
+                <option value="math">Mathematics</option>
+                <option value="c">Problem Solving Using C</option>
+                <option value="stats">Statistics</option>
+                <option value="oe">OE (Business Entrepreneurship)</option>
+                <option value="evs">EVS</option>
+                <option value="electronics">Electronics Basic</option>
+            </select>
+
+            <label for="date">Select Date:</label>
+            <input type="date" id="date">
+        </div>
+
+        <h3>Students List:</h3>
+        <div class="student-list">
+            <div class="student-item">
+                <input type="checkbox" id="student1" checked>
+                <label for="student1">Rishi Singh - Roll No: 71</label>
+            </div>
+            <div class="student-item">
+                <input type="checkbox" id="student2" checked>
+                <label for="student2">Amit Kumar - Roll No: 1</label>
+            </div>
+            <div class="student-item">
+                <input type="checkbox" id="student3">
+                <label for="student3">Priya Sharma - Roll No: 12</label>
+            </div>
+            <div class="student-item">
+                <input type="checkbox" id="student4" checked>
+                <label for="student4">Rahul Verma - Roll No: 23</label>
+            </div>
+            <div class="student-item">
+                <input type="checkbox" id="student5" checked>
+                <label for="student5">Sneha Patel - Roll No: 34</label>
+            </div>
+            <div class="student-item">
+                <input type="checkbox" id="student6">
+                <label for="student6">Vikram Singh - Roll No: 45</label>
+            </div>
+            <div class="student-item">
+                <input type="checkbox" id="student7" checked>
+                <label for="student7">Anita Desai - Roll No: 56</label>
+            </div>
+            <div class="student-item">
+                <input type="checkbox" id="student8" checked>
+                <label for="student8">Karan Mehta - Roll No: 67</label>
+            </div>
+            <div class="student-item">
+                <input type="checkbox" id="student9">
+                <label for="student9">Pooja Reddy - Roll No: 15</label>
+            </div>
+            <div class="student-item">
+                <input type="checkbox" id="student10" checked>
+                <label for="student10">Arjun Nair - Roll No: 29</label>
+            </div>
+        </div>
+
+        <button class="submit-btn">Submit Attendance</button>
+    </div>
 
     <script src="teacher.js"></script>
 </body>

@@ -1,12 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="admin.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - ATTENDX</title>
+    <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-  <script src="admin.js"></script>
+
+    <div class="modal-overlay" id="modal">
+        <div class="modal-box">
+            <h3>Send Alert</h3>
+            <p id="modalTo"></p>
+            <textarea id="alertMsg" placeholder="Type your message..."></textarea>
+            <div class="modal-btns">
+                <button class="cancel-btn" id="cancelBtn">Cancel</button>
+                <button class="send-btn" id="sendBtn">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <h2>ATTENDX</h2>
+        <button class="logout-btn" onclick="window.location.href='index.html'">Logout</button>
+    </nav>
+
+    <div class="admin-container">
+        <h2>Admin Dashboard</h2>
+
+        <div class="summary-section">
+            <div class="summary-card"><h4>Overall Avg.</h4><p id="overallAvg">—</p></div>
+            <div class="summary-card green-card"><h4>Highest</h4><p id="highestSub">—</p></div>
+            <div class="summary-card red-card"><h4>Lowest</h4><p id="lowestSub">—</p></div>
+        </div>
+
+        <h3>Subject-wise Teacher Attendance</h3>
+        <div id="teacherCards"></div>
+
+        <h3>Student Breakdown</h3>
+        <div class="subject-selector">
+            <label for="tableSubject">Select Subject:</label>
+            <select id="tableSubject">
+                <option value="">-- Choose Subject --</option>
+                <option value="math">Mathematics</option>
+                <option value="c">Problem Solving Using C</option>
+                <option value="stats">Statistics</option>
+                <option value="oe">OE (Business Entrepreneurship)</option>
+                <option value="evs">EVS</option>
+                <option value="electronics">Electronics Basic</option>
+            </select>
+        </div>
+        <div class="attendance-details" id="tableArea">
+            <p style="color:#888;">Select a subject to view students.</p>
+        </div>
+
+    </div>
+
+    <script src="admin.js"></script>
 </body>
 </html>

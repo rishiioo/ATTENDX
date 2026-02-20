@@ -3,121 +3,157 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Student Dashboard- ATTENDX</title>
+
+    <title>Student Dashboard - ATTENDX</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="student.css" />
   </head>
+
   <body>
+    <!-- NAVBAR -->
     <nav class="navbar">
-      <h2>ATTENDX</h2>
-      <button class="logout-btn">Logout</button>
+      <div class="logo">ATTEND<span>X</span></div>
+
+      <div class="nav-right">
+        <span class="welcome"> Welcome, Rishi Singh </span>
+
+        <button class="logout-btn">Logout</button>
+      </div>
     </nav>
-    <div class="student-info">
-      <div class="left">
-        <img src="user img.webp" alt="user img" />
+
+    <!-- MAIN DASHBOARD -->
+    <div class="dashboard">
+      <!-- PROFILE -->
+      <div class="card profile-card">
+        <img src="user img.webp" class="profile-img" />
+
+        <div>
+          <h3>Rishi Singh</h3>
+
+          <p>Roll No: 71</p>
+
+          <p>Class: FY BSc (CS)</p>
+        </div>
       </div>
-      <div class="middle">
-        <p><strong>Name:</strong> Rishi Singh</p>
-        <p><strong>Roll No:</strong> 71</p>
-        <p><strong>Class:</strong> F.Y.BSc(CS)</p>
+
+      <!-- STATS -->
+      <div class="card stats">
+        <div class="stat-box present">
+          <h3>17</h3>
+          <p>Present</p>
+        </div>
+
+        <div class="stat-box absent">
+          <h3>4</h3>
+          <p>Absent</p>
+        </div>
+
+        <div class="stat-box total">
+          <h3>21</h3>
+          <p>Total Classes</p>
+        </div>
+
+        <div class="stat-box percentage">
+          <h3>80.95%</h3>
+          <p>Percentage</p>
+        </div>
       </div>
-      <div class="right">
-        <p><strong>Overall %:</strong> 80.95 %</p>
-        <p><strong>Present:</strong> 17 days</p>
-        <p><strong>Absent:</strong> 4 days</p>
+
+      <!-- PROGRESS BAR -->
+      <div class="card">
+        <h3>Overall Attendance</h3>
+
+        <div class="progress-bar">
+          <div class="progress-fill">80.95%</div>
+        </div>
+      </div>
+
+      <!-- SUBJECT SUMMARY -->
+      <div class="card">
+        <h3>Subject Summary</h3>
+
+        <table>
+          <tr>
+            <th>Subject</th>
+            <th>Attendance %</th>
+          </tr>
+
+          <tr>
+            <td>Math</td>
+            <td>88%</td>
+          </tr>
+          <tr>
+            <td>Computer</td>
+            <td>92%</td>
+          </tr>
+          <tr>
+            <td>Statistics</td>
+            <td>78%</td>
+          </tr>
+          <tr>
+            <td>English</td>
+            <td>85%</td>
+          </tr>
+          <tr>
+            <td>EVS</td>
+            <td>80%</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- SUBJECT SELECTOR -->
+      <div class="card">
+        <h3>Select Subject</h3>
+
+        <select id="subject">
+          <option value="">Choose Subject</option>
+
+          <option value="math">Mathematics</option>
+          <option value="computer">Computer</option>
+          <option value="stats">Statistics</option>
+          <option value="english">English</option>
+          <option value="evs">EVS</option>
+          <option value="oe">OE</option>
+          <option value="electronics">Electronics</option>
+        </select>
+      </div>
+
+      <!-- ATTENDANCE TABLE -->
+      <div class="card">
+        <h3>
+          Subject Attendance:
+          <span id="selected-subject"> None </span>
+        </h3>
+
+        <table id="attendance-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <!-- RECENT ACTIVITY -->
+      <div class="card">
+        <h3>Recent Activity</h3>
+
+        <ul>
+          <li>Computer attendance marked (10 Jan)</li>
+          <li>Math attendance marked (8 Jan)</li>
+          <li>EVS missed (7 Jan)</li>
+        </ul>
       </div>
     </div>
-    <div class="subject-selector">
-      <label for="subject">Select Subject:</label>
-      <select id="subject">
-        <option value="">-- Choose Subject --</option>
-        <option value="math">Mathematics</option>
-        <option value="c">Computer</option>
-        <option value="stats">Statistics</option>
-        <option value="oe">OE (Business Entrepreneurship)</option>
-        <option value="evs">EVS</option>
-        <option value="electronics">Electronics Basic</option>
-        <option value="electronics">English</option>
 
-      </select>
-    </div>
-    <div class="attendance-details">
-    <h3>Subject: <span id="selected-subject">Select a subject</span></h3>
-    <table>
-    <tr>
-        <th>Date</th>
-        <th>Status</th>
-    </tr>
-    <tr>
-        <td>10-Jan-2026</td>
-        <td>Present</td>
-    </tr>
-    <tr>
-        <td>9-Jan-2026</td>
-        <td>Present</td>
-    </tr>
-        <tr>
-        <td>8-Jan-2026</td>
-        <td>Present</td>
-    </tr>
-    <tr>
-        <td>7-Jan-2026</td>
-        <td>Absent</td>
-    </tr>
-    <tr>
-        <td>6-Jan-2026</td>
-        <td>Absent</td>
-    </tr>
-    <tr>
-        <td>5-Jan-2026</td>
-        <td>Present</td>
-    </tr>
-    <tr>
-        <td>3-Jan-2026</td>
-        <td>Absent</td>
-    </tr>
-    <tr>
-        <td>2-Jan-2026</td>
-        <td>Present</td>
-    </tr>
-    <tr>
-        <td>31-Dec-2025</td>
-        <td>Present</td>
-    </tr>
-    <tr>
-        <td>30-Dec-2025</td>
-        <td>Present</td>
-    </tr>
-    <tr>
-        <td>29-Dec-2025</td>
-        <td>Present</td>
-    </tr>
-    <tr>
-        <td>27-Dec-2025</td>
-        <td>Present</td>
-    </tr>
-    <tr>
-        <td>26-Dec-2025</td>
-        <td>Absent</td>
-    </tr>
-    <tr>
-        <td>25-Dec-2025</td>
-        <td>Present</td>
-    </tr>
-    <tr>
-        <td>24-Dec-2025</td>
-        <td>Present</td>
-    </tr>
-    <tr>
-        <td>23-Dec-2025</td>
-        <td>Present</td>
-    </tr>
-    <tr>
-        <td>22-Dec-2025</td>
-        <td>Present</td>
-    </tr>
-
-</table>
-</div>
     <script src="student.js"></script>
   </body>
 </html>
