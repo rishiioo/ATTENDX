@@ -100,3 +100,10 @@ input[type="date"] {
 .submit-btn:hover {
   background-color: #16a34a;
 }
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #1e1e2f;
+    color: white;
+    margin-top: 40px;
+}

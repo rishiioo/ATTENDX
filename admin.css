@@ -69,3 +69,10 @@ th, td {
     margin: 10px 0;
     border-left: 5px solid red;
 }
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #1e1e2f;
+    color: white;
+    margin-top: 40px;
+}
