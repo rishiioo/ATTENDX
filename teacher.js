@@ -1,61 +1,61 @@
-// Logout functionality
+
 const logoutBtn = document.querySelector(".logout-btn");
-
-if (logoutBtn) {
-  logoutBtn.addEventListener("click", () => {
-    window.location.href = "index.html";
-  });
-}
-
-// Submit attendance functionality
 const submitBtn = document.querySelector(".submit-btn");
-const subjectSelect = document.getElementById("subject");
-const dateInput = document.getElementById("date");
+const subject = document.getElementById("subject");
+const date = document.getElementById("date");
+const studentCheckboxes = document.querySelectorAll(".student input");
 
-if (submitBtn) {
-  submitBtn.addEventListener("click", () => {
-    // Get selected subject
-    const subject = subjectSelect.value;
-    const subjectText = subjectSelect.options[subjectSelect.selectedIndex].text;
-    const date = dateInput.value;
+logoutBtn.addEventListener("click", () => {
+  if (confirm("Are you sure you want to logout?")) {
+    window.location.href = "index.html";
+  }
+});
 
-    // Validation
-    if (!subject) {
-      alert("Please select a subject!");
-      return;
-    }
 
-    if (!date) {
-      alert("Please select a date!");
-      return;
-    }
+submitBtn.addEventListener("click", () => {
+  const selectedSubject = subject.value;
+  const selectedDate = date.value;
 
-    // Count present/absent students
-    const checkboxes = document.querySelectorAll(
-      '.student-item input[type="checkbox"]',
-    );
-    let presentCount = 0;
-    let absentCount = 0;
+  if (selectedSubject === "") {
+    alert("Please select subject");
+    return;
+  }
 
-    checkboxes.forEach((checkbox) => {
-      if (checkbox.checked) {
-        presentCount++;
-      } else {
-        absentCount++;
-      }
-    });
+  if (selectedDate === "") {
+    alert("Please select date");
+    return;
+  }
 
-    // Show success message
-    alert(
-      `Attendance Marked Successfully!\n\nSubject: ${subjectText}\nDate: ${date}\nPresent: ${presentCount}\nAbsent: ${absentCount}`,
-    );
 
-    // In production, this would save to database
-    console.log("Attendance Data:", {
-      subject: subject,
-      date: date,
-      present: presentCount,
-      absent: absentCount,
-    });
+  let present = 0;
+  let absent = 0;
+
+  studentCheckboxes.forEach((student) => {
+    if (student.checked) present++;
+    else absent++;
   });
-}
+
+
+  const attendanceData = {
+    subject: selectedSubject,
+    date: selectedDate,
+    present: present,
+    absent: absent,
+  };
+
+
+  localStorage.setItem("attendance", JSON.stringify(attendanceData));
+
+
+  alert(
+    `Attendance Submitted Successfully!
+
+Subject: ${selectedSubject}
+Date: ${selectedDate}
+
+Present: ${present}
+Absent: ${absent}`,
+  );
+
+  console.log(attendanceData);
+});

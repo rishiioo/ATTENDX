@@ -181,3 +181,10 @@ td {
 
   font-weight: bold;
 }
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #1e1e2f;
+    color: white;
+    margin-top: 40px;
+}
