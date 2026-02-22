@@ -1,61 +1,70 @@
 const teachers = [
-    { name: "Mr. Sharma", attendance: 92 },
-    { name: "Mrs. Khan", attendance: 68 },
-    { name: "Mr. Patel", attendance: 85 }
+  { name: "Mr Sharma", attendance: 82 },
+  { name: "Ms Patel", attendance: 68 },
+  { name: "Mr Khan", attendance: 91 },
+  { name: "Ms Rao", attendance: 59 }
 ];
 
-const students = [
-    { name: "Rohit", attendance: 88 },
-    { name: "Aman", attendance: 60 },
-    { name: "Sneha", attendance: 72 },
-    { name: "Priya", attendance: 55 }
-];
+const totalStudents = 120;
+const todayAttendance = 87;
 
-function loadData() {
-    document.getElementById("teacherCount").innerText = teachers.length;
-    document.getElementById("studentCount").innerText = students.length;
+function loadDashboard() {
 
-    let low = students.filter(s => s.attendance < 75).length;
-    document.getElementById("lowAttendance").innerText = low;
+  document.getElementById("totalTeachers").innerText = teachers.length;
+  document.getElementById("totalStudents").innerText = totalStudents;
+  document.getElementById("todayAttendance").innerText = todayAttendance + "%";
 
-    const teacherTable = document.getElementById("teacherTable");
-    const studentTable = document.getElementById("studentTable");
-    const warningBox = document.getElementById("warningBox");
+  const low = teachers.filter(t => t.attendance < 75).length;
+  document.getElementById("lowAttendance").innerText = low;
 
-    teachers.forEach(t => {
-        teacherTable.innerHTML += `
-            <tr>
-                <td>${t.name}</td>
-                <td>${t.attendance}%</td>
-                <td>${t.attendance < 75 ? "⚠ Warning" : "Good"}</td>
-            </tr>
-        `;
-    });
-
-    students.forEach(s => {
-        studentTable.innerHTML += `
-            <tr>
-                <td>${s.name}</td>
-                <td>${s.attendance}%</td>
-                <td>${s.attendance < 75 ? "⚠ Warning" : "Good"}</td>
-            </tr>
-        `;
-
-        if (s.attendance < 75) {
-            warningBox.innerHTML += `
-                <div class="warning">
-                    ${s.name} has low attendance (${s.attendance}%)
-                </div>
-            `;
-        }
-    });
+  loadTable();
+  loadChart();
 }
 
-function showSection(id) {
-    document.querySelectorAll('.section').forEach(sec => {
-        sec.classList.add('hidden');
-    });
-    document.getElementById(id).classList.remove('hidden');
+function loadTable() {
+  const table = document.getElementById("teacherTable");
+  table.innerHTML = "";
+
+  teachers.forEach(teacher => {
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+      <td>${teacher.name}</td>
+      <td style="color:${teacher.attendance < 75 ? 'red' : 'green'}">
+        ${teacher.attendance}%
+      </td>
+      <td>
+        ${teacher.attendance < 75 
+          ? `<button class="warning" onclick="sendWarning('${teacher.name}')">Send Warning</button>`
+          : "Good"}
+      </td>
+    `;
+
+    table.appendChild(row);
+  });
 }
 
-window.onload = loadData;
+function sendWarning(name) {
+  const log = document.getElementById("activityLog");
+  const time = new Date().toLocaleTimeString();
+
+  log.innerHTML += `<p>⚠ Warning sent to ${name} at ${time}</p>`;
+}
+
+function loadChart() {
+  const ctx = document.getElementById("attendanceChart");
+
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: teachers.map(t => t.name),
+      datasets: [{
+        label: "Attendance %",
+        data: teachers.map(t => t.attendance),
+        backgroundColor: "#007bff"
+      }]
+    }
+  });
+}
+
+loadDashboard();
