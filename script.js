@@ -1,91 +1,59 @@
+import { auth, db } from "./firebase-config.js";
+import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+import { doc, getDoc } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
 const form = document.getElementById("loginForm");
-form.addEventListener("submit", function (event) {
+
+form.addEventListener("submit", async function (event) {
   event.preventDefault();
 
-  // Get selected role
-  const selectedUser = document.querySelector('input[name="userType"]:checked');
+  // Get email and password
+  const email = document.getElementById("loginusername").value.trim();
+  const password = document.getElementById("loginpassword").value.trim();
 
-  // Get inputs
-  const username = document.getElementById("username").value.trim();
-  const password = document.getElementById("password").value.trim();
-
-  // Validation
-  if (!selectedUser) {
-    showError("Please select a role.");
+  if (!email || !password) {
+    showError("Email and password cannot be empty.");
     return;
   }
 
-  if (username === "" || password === "") {
-    showError("Username and password cannot be empty.");
-    return;
-  }
+  try {
+    // Firebase modular login
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const uid = userCredential.user.uid;
 
-  const userType = selectedUser.value;
+    // Fetch user role from Firestore
+    const userDoc = await getDoc(doc(db, "users", uid));
+    if (!userDoc.exists()) throw new Error("User not found");
 
-  // Demo credential database
-  const users = {
-    student: {
-      username: "student1",
-      password: "demo123",
-      redirect: href="student-dashboard.html",
-    },
-    teacher: {
-      username: "teacher1",
-      password: "demo123",
-      redirect: "teacher-dashboard.html",
-    },
-    admin: {
-      username: "admin1",
-      password: "admin123",
-      redirect: "admin-dashboard.html",
-    },
-  };
+    const role = userDoc.data().role;
 
-  // Check credentials
-  if (
-    username === users[userType].username &&
-    password === users[userType].password
-  ) {
-    showSuccess("Login successful!");
+    // Redirect based on role
+    if (role === "student") window.location.href = "student-dashboard.html";
+    else if (role === "teacher") window.location.href = "teacher-dashboard.html";
+    else if (role === "admin") window.location.href = "admin-dashboard.html";
+    else throw new Error("Invalid role");
 
-    // Delay for better UX
-    setTimeout(() => {
-      window.location.href = users[userType].redirect;
-    }, 800);
-  } else {
-    showError("Invalid username or password.");
-  }
+  } catch (error) {
+if (error.code === 'auth/wrong-password') {
+    showError("Incorrect password. Please try again.");
+} else if (error.code === 'auth/user-not-found') {
+    showError("No account found with this email.");
+} else {
+    showError("Login failed. Please try again.");
+}  }
 });
 
-// Error function
+// Error display function
 function showError(message) {
   removeMessage();
-
   const error = document.createElement("div");
-
   error.className = "error-message";
   error.innerText = message;
-
   form.prepend(error);
 }
 
-// Success function
-function showSuccess(message) {
-  removeMessage();
-
-  const success = document.createElement("div");
-
-  success.className = "success-message";
-  success.innerText = message;
-
-  form.prepend(success);
-}
-
-// Remove old message
+// Remove old error/success messages
 function removeMessage() {
   const oldMessage = document.querySelector(".error-message, .success-message");
-
-  if (oldMessage) {
-    oldMessage.remove();
-  }
+  if (oldMessage) oldMessage.remove();
 }

@@ -49,50 +49,6 @@
     </form>
   </div>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword } 
-      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-    import { getFirestore, doc, setDoc } 
-      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyCEMdtxpccxO-ljWBOgx8slMO650JMAZcY",
-      authDomain: "attendx-2924d.firebaseapp.com",
-      projectId: "attendx-2924d",
-      storageBucket: "attendx-2924d.firebasestorage.app",
-      messagingSenderId: "159650493656",
-      appId: "1:159650493656:web:bce902f2087cbdccd4d3ad"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-
-    document.getElementById("signupBtn").addEventListener("click", async () => {
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("signuppassword").value;
-      const role = document.getElementById("role").value;
-
-      try {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-
-        await setDoc(doc(db, "users", user.uid), {
-          name,
-          email,
-          role,
-          createdAt: new Date()
-        });
-
-        alert("Account created successfully!");
-        window.location.href = "index.html";
-
-      } catch (error) {
-        alert(error.message);
-      }
-    });
-  </script>
+  <script type="module" src="signup.js"></script>
 </body>
 </html>

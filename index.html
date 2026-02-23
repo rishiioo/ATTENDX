@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ATTENDX Login</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"rel="stylesheet"/>
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -19,31 +15,13 @@
         <h2 class="logo">ATTEND<span>X</span></h2>
         <p class="subtitle">Attendance Management System</p>
 
-        <div class="role-selector">
-          <input
-            type="radio"
-            name="userType"
-            value="student"
-            id="student"
-            checked
-          />
-          <label for="student">Student</label>
-
-          <input type="radio" name="userType" value="teacher" id="teacher" />
-          <label for="teacher">Teacher</label>
-
-          <input type="radio" name="userType" value="admin" id="admin" />
-          <label for="admin">Admin</label>
-        </div>
-
-        <div class="input-group">
-          <label>Username</label>
-          <input type="text" id="username" placeholder="Enter username" />
-        </div>
-
+<div class="input-group">
+  <label>Email</label>
+  <input type="email" id="loginusername" placeholder="Enter email" required />
+</div>
         <div class="input-group">
           <label>Password</label>
-          <input type="password" id="loginpassword" placeholder="Enter password" />
+          <input type="password" id="loginpassword" placeholder="Enter password" required/>
         </div>
 
         <button type="submit" class="login-btn">Login</button>
@@ -54,7 +32,7 @@
 
       </form>
 
-    </script>
-    <script src="script.js"></script>
-  </body>
+    
+<script type="module" src="script.js"></script>  
+</body>
 </html>

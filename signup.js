@@ -1,18 +1,24 @@
+console.log("Signup JS loaded");
 // Firebase Imports
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword } 
-  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { getFirestore, doc, setDoc } 
-  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {
+  getFirestore,
+  doc,
+  setDoc,
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 // Firebase Config
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyCEMdtxpccxO-ljWBOgx8slMO650JMAZcY",
+  authDomain: "attendx-2924d.firebaseapp.com",
+  projectId: "attendx-2924d",
+  storageBucket: "attendx-2924d.firebasestorage.app",
+  messagingSenderId: "159650493656",
+  appId: "1:159650493656:web:bce902f2087cbdccd4d3ad",
 };
 
 // Initialize Firebase
@@ -44,7 +50,7 @@ signupBtn.addEventListener("click", async () => {
     const userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
-      password
+      password,
     );
 
     const user = userCredential.user;
@@ -54,12 +60,11 @@ signupBtn.addEventListener("click", async () => {
       name,
       email,
       role,
-      createdAt: new Date()
+      createdAt: new Date(),
     });
 
     alert("Account created successfully!");
     window.location.href = "index.html";
-
   } catch (error) {
     alert(error.message);
   }
