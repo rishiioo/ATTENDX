@@ -14,7 +14,28 @@ body {
 
   height: 100vh;
 }
+#signupBtn {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 12px;
+}
 
+#signupBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
+}
+
+#signupBtn:active {
+  transform: scale(0.98);
+}
 .login-btn {
   width: 100%;
   padding: 12px;

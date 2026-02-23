@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATTENDX - Sign Up</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <form class="login-card" id="signupForm">
+      <h2 class="logo">ATTEND<span>X</span></h2>
+      <p class="subtitle">Create your account</p>
+
+      <div class="input-group">
+        <label>Full Name</label>
+        <input type="text" id="name" placeholder="Enter full name" required />
+      </div>
+
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Enter email" required />
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" id="signuppassword" placeholder="Enter password" required />
+      </div>
+
+      <div class="input-group">
+        <label>Role</label>
+        <select id="role" required>
+          <option value="student">Student</option>
+          <option value="teacher">Teacher</option>
+        </select>
+      </div>
+
+      <button type="button" id="signupBtn" class="signup-btn">
+        Create Account
+      </button>
+
+      <p style="text-align:center; margin-top:15px;">
+        Already have an account?
+        <a href="index.html">Login</a>
+      </p>
+    </form>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } 
+      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, doc, setDoc } 
+      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCEMdtxpccxO-ljWBOgx8slMO650JMAZcY",
+      authDomain: "attendx-2924d.firebaseapp.com",
+      projectId: "attendx-2924d",
+      storageBucket: "attendx-2924d.firebasestorage.app",
+      messagingSenderId: "159650493656",
+      appId: "1:159650493656:web:bce902f2087cbdccd4d3ad"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    document.getElementById("signupBtn").addEventListener("click", async () => {
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("signuppassword").value;
+      const role = document.getElementById("role").value;
+
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        await setDoc(doc(db, "users", user.uid), {
+          name,
+          email,
+          role,
+          createdAt: new Date()
+        });
+
+        alert("Account created successfully!");
+        window.location.href = "index.html";
+
+      } catch (error) {
+        alert(error.message);
+      }
+    });
+  </script>
+</body>
+</html>
