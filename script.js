@@ -3,8 +3,14 @@
 // ========================
 
 import { auth, db } from "./firebase-config.js";
-import { signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
-import { doc, getDoc } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+import {
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+import {
+  doc,
+  getDoc,
+} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
 const form = document.getElementById("loginForm");
 const forgotLink = document.getElementById("forgotPasswordLink");
@@ -27,7 +33,11 @@ form.addEventListener("submit", async (event) => {
 
   try {
     // Firebase login
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password,
+    );
     const uid = userCredential.user.uid;
 
     // Fetch user role from Firestore
@@ -38,14 +48,14 @@ form.addEventListener("submit", async (event) => {
 
     // Redirect based on role
     if (role === "student") window.location.href = "student-dashboard.html";
-    else if (role === "teacher") window.location.href = "teacher-dashboard.html";
+    else if (role === "teacher")
+      window.location.href = "teacher-dashboard.html";
     else if (role === "admin") window.location.href = "admin-dashboard.html";
     else throw new Error("Invalid role");
-
   } catch (error) {
-    if (error.code === 'auth/wrong-password') {
+    if (error.code === "auth/wrong-password") {
       showError("Incorrect password. Please try again.");
-    } else if (error.code === 'auth/user-not-found') {
+    } else if (error.code === "auth/user-not-found") {
       showError("No account found with this email.");
     } else if (error.code === "auth/invalid-email") {
       showError("Please enter a valid email.");
