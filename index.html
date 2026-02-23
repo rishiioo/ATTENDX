@@ -4,38 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ATTENDX Login</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"rel="stylesheet"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
-
   <body>
     <div class="container">
       <form class="login-card" id="loginForm">
         <h2 class="logo">ATTEND<span>X</span></h2>
         <p class="subtitle">Attendance Management System</p>
 
-<div class="input-group">
-  <label>Email</label>
-  <input type="email" id="loginusername" placeholder="Enter email" required />
-</div>
+        <div class="input-group">
+          <label>Email</label>
+          <input
+            type="email"
+            id="loginusername"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+
         <div class="input-group">
           <label>Password</label>
-          <input type="password" id="loginpassword" placeholder="Enter password" required/>
-          <p style="text-align:right; margin-top:5px;">
-  <a href="#" id="forgotPasswordLink">Forgot Password?</a>
-</p>
+          <input
+            type="password"
+            id="loginpassword"
+            placeholder="Enter your password"
+            required
+          />
         </div>
 
         <button type="submit" class="login-btn">Login</button>
-        <p style="text-align:center; margin-top:15px;">
-  Don't have an account?
-  <a href="signup.html">Sign up</a>
-</p>
 
+        <p style="text-align: center; margin-top: 15px">
+          Don't have an account?
+          <a href="signup.html">Sign up</a> |
+          <a href="#" id="forgotPasswordLink">Forgot Password?</a>
+        </p>
       </form>
+    </div>
 
-    
-<script type="module" src="script.js"></script>  
-</body>
+    <script type="module" src="script.js"></script>
+  </body>
 </html>
