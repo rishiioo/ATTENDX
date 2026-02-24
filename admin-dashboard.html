@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Admin Dashboard - AttendX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - ATTENDX</title>
   <link rel="stylesheet" href="admin.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+
 <nav class="navbar">
   <div class="logo">ATTENDX</div>
   <ul class="nav-links">
@@ -14,8 +15,11 @@
     <li><a href="#">Teachers</a></li>
     <li><a href="#">Students</a></li>
     <li><a href="#">Reports</a></li>
-<li><a href="#" class="logout-btn" onclick="logout()">Logout</a></li>
+    <li><a href="#" class="logout-btn" onclick="logout()">Logout</a></li>
+  </ul>
 </nav>
+
+<div class="container">
   <h1>Admin Dashboard</h1>
 
   <!-- KPI CARDS -->
@@ -41,9 +45,17 @@
     </div>
   </div>
 
-  <!-- GRAPH -->
-  <div class="chart-container">
-    <canvas id="attendanceChart"></canvas>
+  <!-- CHARTS -->
+  <div class="charts-section">
+    <div class="chart-box">
+      <h3>Attendance Trend Over Time</h3>
+      <canvas id="attendanceLineChart"></canvas>
+    </div>
+    
+    <div class="chart-box">
+      <h3>Subject-wise Attendance Comparison</h3>
+      <canvas id="subjectBarChart"></canvas>
+    </div>
   </div>
 
   <!-- TEACHER TABLE -->
@@ -60,13 +72,18 @@
   </table>
 
   <!-- ACTIVITY LOG -->
-  <h2>Activity Log</h2>
-  <div id="activityLog" class="log-box"></div>
-<footer class="footer">
-  <p>© 2026 AttendX. All Rights Reserved.</p>
-  <p>Contact us: attendx@gmail.com</p>
+  <h2>Recent Activity Log</h2>
+  <div id="activityLog" class="log-box">
+    <p>No recent activity</p>
+  </div>
+</div>
 
+<footer class="footer">
+    <p>© 2026 ATTENDX. All Rights Reserved.</p>
+    <p>Contact: attendx@gmail.com | Phone: +91-XXXXXXXXXX</p>
 </footer>
-  <script src="admin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="admin.js"></script>
+
 </body>
 </html>

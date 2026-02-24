@@ -1,83 +1,110 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ATTENDX - Teacher Dashboard</title>
-    <link rel="stylesheet" href="teacher.css" />
-  </head>
-  <body>
-    <nav class="navbar">
-      <h2>ATTENDX Teacher Panel</h2>
-      <button class="logout-btn">Logout</button>
-    </nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - ATTENDX</title>
+    <link rel="stylesheet" href="teacher.css">
+</head>
+<body>
 
-    <div class="dashboard">
-      <div class="card">
-        <h3>Attendance Details</h3>
+<nav class="navbar">
+    <div class="logo">ATTENDX</div>
+    <ul class="nav-links">
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">My Classes</a></li>
+        <li><a href="#">Reports</a></li>
+        <li><a href="#" class="logout-btn" onclick="logout()">Logout</a></li>
+    </ul>
+</nav>
 
-        <label>Select Subject</label>
-        <select id="subject">
-          <option value="">Select Subject</option>
-          <option value="Mathematics">Mathematics</option>
-          <option value="C Programming">Problem Solving Using C</option>
-          <option value="Statistics">Statistics</option>
-          <option value="Entrepreneurship">Business Entrepreneurship</option>
-          <option value="EVS">EVS</option>
-          <option value="Electronics">Electronics Basic</option>
-        </select>
-
-        <label>Select Date</label>
-        <input type="date" id="date" />
-      </div>
-
-      <div class="card">
-        <h3>Student List</h3>
-
-        <div class="student-list">
-          <div class="student">
-            <span>Rishi Singh (Roll 71)</span>
-            <input type="checkbox" checked />
-          </div>
-
-          <div class="student">
-            <span>Amit Kumar (Roll 1)</span>
-            <input type="checkbox" checked />
-          </div>
-
-          <div class="student">
-            <span>Priya Sharma (Roll 12)</span>
-            <input type="checkbox" />
-          </div>
-
-          <div class="student">
-            <span>Rahul Verma (Roll 23)</span>
-            <input type="checkbox" checked />
-          </div>
-
-          <div class="student">
-            <span>Sneha Patel (Roll 34)</span>
-            <input type="checkbox" />
-          </div>
-
-          <div class="student">
-            <span>Vikram Singh (Roll 45)</span>
-            <input type="checkbox" />
-          </div>
+<div class="container">
+    <h1>Mark Attendance</h1>
+    
+    <!-- FORM SECTION -->
+    <div class="form-section">
+        <div class="input-group">
+            <label for="subject">Select Subject:</label>
+            <select id="subject">
+                <option value="">-- Choose Subject --</option>
+                <option value="math">Mathematics</option>
+                <option value="c">Problem Solving Using C</option>
+                <option value="stats">Statistics</option>
+                <option value="oe">OE (Business Entrepreneurship)</option>
+                <option value="evs">EVS</option>
+                <option value="electronics">Electronics Basic</option>
+            </select>
         </div>
-      </div>
 
-      <button class="submit-btn">Submit Attendance</button>
+        <div class="input-group">
+            <label for="date">Select Date:</label>
+            <input type="date" id="date">
+        </div>
     </div>
-<footer>
-    <p>© 2026 ATTENDX. All Rights Reserved.</p>
-    <p>Contact: attendx.support@gmail.com</p>
-    <p>
-        GitHub: github.com/rishi-attendx |
-        LinkedIn: linkedin.com/in/rishi-singh
-    </p>
-</footer>   
 
-    <script src="teacher.js"></script>
-  </body>
+    <!-- QR CODE SECTION -->
+    <div class="qr-section">
+        <h3>⚡ Quick Attendance via QR Code</h3>
+        <p>Students can scan this QR code to mark themselves present</p>
+        <div id="qrcode"></div>
+        <p class="qr-code-text">Class Code: <strong id="classCode">Click Generate</strong></p>
+        <button class="generate-btn" onclick="generateQR()">Generate New QR Code</button>
+    </div>
+
+    <!-- STUDENT LIST -->
+    <h3>Or Mark Manually:</h3>
+    <div class="student-list">
+        <div class="student-item">
+            <input type="checkbox" id="student1" checked>
+            <label for="student1">Rishi Singh - Roll No: 71</label>
+        </div>
+        <div class="student-item">
+            <input type="checkbox" id="student2" checked>
+            <label for="student2">Amit Kumar - Roll No: 1</label>
+        </div>
+        <div class="student-item">
+            <input type="checkbox" id="student3">
+            <label for="student3">Priya Sharma - Roll No: 12</label>
+        </div>
+        <div class="student-item">
+            <input type="checkbox" id="student4" checked>
+            <label for="student4">Rahul Verma - Roll No: 23</label>
+        </div>
+        <div class="student-item">
+            <input type="checkbox" id="student5" checked>
+            <label for="student5">Sneha Patel - Roll No: 34</label>
+        </div>
+        <div class="student-item">
+            <input type="checkbox" id="student6">
+            <label for="student6">Vikram Singh - Roll No: 45</label>
+        </div>
+        <div class="student-item">
+            <input type="checkbox" id="student7" checked>
+            <label for="student7">Anita Desai - Roll No: 56</label>
+        </div>
+        <div class="student-item">
+            <input type="checkbox" id="student8" checked>
+            <label for="student8">Karan Mehta - Roll No: 67</label>
+        </div>
+        <div class="student-item">
+            <input type="checkbox" id="student9">
+            <label for="student9">Pooja Reddy - Roll No: 15</label>
+        </div>
+        <div class="student-item">
+            <input type="checkbox" id="student10" checked>
+            <label for="student10">Arjun Nair - Roll No: 29</label>
+        </div>
+    </div>
+
+    <button class="submit-btn" onclick="submitAttendance()">Submit Attendance</button>
+</div>
+
+<footer class="footer">
+    <p>© 2026 ATTENDX. All Rights Reserved.</p>
+    <p>Contact: attendx@gmail.com | Phone: +91-XXXXXXXXXX</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script src="teacher.js"></script>
+
+</body>
 </html>

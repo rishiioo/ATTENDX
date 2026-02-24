@@ -25,19 +25,58 @@ body::before {
 }
 
 .navbar {
-  background: #0f172a;
-
-  color: white;
-
-  padding: 20px;
-
-  display: flex;
-
-  justify-content: space-between;
-
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #1a237e 0%, #0f172a 100%);
+    padding: 15px 40px;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #e5e7eb;
+    font-weight: 500;
+    transition: 0.3s;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+.nav-links li a:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.logout-btn {
+    background: #dc2626 !important;
+    padding: 8px 16px !important;
+    border-radius: 6px;
+    color: white !important;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.logout-btn:hover {
+    background: #b91c1c !important;
+    transform: translateY(-2px);
+}
 .logo {
   font-size: 24px;
 
@@ -194,10 +233,55 @@ td {
 
   font-weight: bold;
 }
-footer {
+.footer {
     text-align: center;
-    padding: 15px;
-    background: #1e1e2f;
-    color: white;
-    margin-top: 40px;
+    padding: 25px;
+    background: linear-gradient(135deg, #1a237e 0%, #0f172a 100%);
+    color: #e5e7eb;
+    margin-top: 50px;
+    font-size: 14px;
+    line-height: 1.8;
+}
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+    
+    .logo {
+        font-size: 20px;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        font-size: 13px;
+    }
+    
+    h1 {
+        font-size: 24px !important;
+    }
+    
+    h2 {
+        font-size: 20px !important;
+    }
+    
+    h3 {
+        font-size: 18px !important;
+    }
+    
+    .container {
+        padding: 15px !important;
+    }
+    
+    /* Make grids single column on mobile */
+    .kpi-container,
+    .charts-section,
+    .student-list,
+    .form-section {
+        grid-template-columns: 1fr !important;
+    }
 }
