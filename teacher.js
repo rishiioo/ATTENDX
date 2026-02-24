@@ -29,7 +29,7 @@ function generateQR() {
         });
         
         // Show success message
-        showNotification("QR Code generated successfully! Valid for 15 minutes.");
+        showNotification("QR Code generated successfully! Valid for 5 minutes.");
     } catch (error) {
         console.error("Error generating QR code:", error);
         showNotification("Error generating QR code. Please try again.", "error");
