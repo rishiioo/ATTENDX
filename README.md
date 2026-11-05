@@ -75,14 +75,3 @@ Get these values from the **Firebase Console → Project Settings → General �
 ## 📂 Repository Layout
 
 ```
-ATTENDX/
-├── index.html                 # Login page
-├── student-dashboard.html     # Student view
-├── teacher-dashboard.html     # Teacher view
-├── admin-dashboard.html       # Admin view
-├── style.css / student.css / teacher.css / admin.css
-├── script.js / student.js / teacher.js / admin.js
-├── firebase-config.js         # ← create this (not committed)
-├── admin-dashboard.zip        # packaged admin dashboard
-└── README.md                  # this file
-```
